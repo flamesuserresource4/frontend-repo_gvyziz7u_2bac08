@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { BRAND } from '../brand'
 
 const CATEGORIES = [
   'Interiors',
@@ -16,7 +17,6 @@ export default function Portfolio() {
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(false)
   const backend = import.meta.env.VITE_BACKEND_URL
-  const navigate = useNavigate()
 
   useEffect(()=>{
     setLoading(true)
@@ -33,11 +33,11 @@ export default function Portfolio() {
     <section id="portfolio" className="relative bg-white">
       <div className="mx-auto max-w-7xl px-6 py-20">
         <div className="flex items-end justify-between">
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900">Portfolio</h2>
+          <h2 className="text-2xl md:text-3xl font-semibold heading-font tracking-tight text-[#111111]">Portfolio</h2>
           <div className="flex gap-2 overflow-x-auto py-2">
-            <button onClick={() => setActive('All')} className={`px-4 py-2 text-sm rounded-full border ${active==='All'?'border-neutral-800 text-neutral-900':'border-neutral-300 text-neutral-600'} whitespace-nowrap`}>All</button>
+            <button onClick={() => setActive('All')} className={`px-4 py-2 text-sm rounded-full border ${active==='All'? BRAND.colors.chipActive : BRAND.colors.chip} whitespace-nowrap`}>All</button>
             {CATEGORIES.map((c) => (
-              <button key={c} onClick={() => setActive(c)} className={`px-4 py-2 text-sm rounded-full border ${active===c?'border-neutral-800 text-neutral-900':'border-neutral-300 text-neutral-600'} whitespace-nowrap`}>
+              <button key={c} onClick={() => setActive(c)} className={`px-4 py-2 text-sm rounded-full border ${active===c? BRAND.colors.chipActive : BRAND.colors.chip} whitespace-nowrap`}>
                 {c}
               </button>
             ))}
@@ -60,7 +60,7 @@ export default function Portfolio() {
         )}
 
         <div className="mt-10 flex justify-center">
-          <Link to="/portfolio" className="inline-flex items-center rounded-full border border-neutral-300 px-6 py-3 text-neutral-900 hover:border-neutral-400">Explore Full Portfolio</Link>
+          <Link to="/portfolio" className={`inline-flex items-center rounded-full border px-6 py-3 ${BRAND.colors.accentBorder} text-[#111111] hover:opacity-90`}>Explore Full Portfolio</Link>
         </div>
       </div>
 

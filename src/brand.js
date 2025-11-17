@@ -1,13 +1,18 @@
 export const BRAND = {
-  name: 'Studio Property',
+  name: 'Bianco Property Photography',
   tagline: 'Refined imagery for real estate',
-  logoUrl: '', // optional: provide a full URL to your logo image (SVG/PNG)
+  logoUrl: '', // using text wordmark in heading font for now
   colors: {
-    text: 'text-neutral-900',
-    subtext: 'text-neutral-600',
-    accentText: 'text-amber-700/80',
-    accentBorder: 'border-amber-600/60',
-    chipActive: 'border-neutral-900 text-neutral-900',
-    chip: 'border-neutral-300 text-neutral-600',
+    text: 'text-[#111111]',
+    subtext: 'text-[#707070]',
+    accentText: 'text-[#BDA27E]',
+    accentBorder: 'border-[#BDA27E]',
+    chipActive: 'border-[#111111] text-[#111111] bg-[#F5F5F5]',
+    chip: 'border-neutral-300 text-[#707070] bg-white',
+    bgLight: 'bg-[#F5F5F5]',
   },
+  fonts: {
+    heading: 'Playfair Display',
+    body: 'Inter'
+  }
 }

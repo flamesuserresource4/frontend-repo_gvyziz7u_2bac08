@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', phone: '', property_type: '', message: '' })
   const [status, setStatus] = useState({ state: 'idle', message: '' })
   const backend = import.meta.env.VITE_BACKEND_URL
 
@@ -19,7 +19,7 @@ export default function Contact() {
       const data = await res.json()
       if (!res.ok) throw new Error(data.detail || 'Failed to send')
       setStatus({ state: 'success', message: 'Thanks — your message has been sent.' })
-      setForm({ name: '', email: '', phone: '', message: '' })
+      setForm({ name: '', email: '', phone: '', property_type: '', message: '' })
     } catch (err) {
       setStatus({ state: 'error', message: err.message + ' — saved for follow-up.' })
     }
@@ -40,9 +40,13 @@ export default function Contact() {
                 <label className="text-sm text-neutral-700">Email</label>
                 <input name="email" type="email" value={form.email} onChange={onChange} className="mt-1 w-full rounded-md border border-neutral-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-neutral-400" required />
               </div>
-              <div className="sm:col-span-2">
-                <label className="text-sm text-neutral-700">Phone</label>
-                <input name="phone" value={form.phone} onChange={onChange} className="mt-1 w-full rounded-md border border-neutral-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-neutral-400" placeholder="Optional" />
+              <div>
+                <label className="text-sm text-neutral-700">Phone <span className="text-neutral-400">(optional)</span></label>
+                <input name="phone" value={form.phone} onChange={onChange} className="mt-1 w-full rounded-md border border-neutral-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-neutral-400" placeholder="+356 …" />
+              </div>
+              <div>
+                <label className="text-sm text-neutral-700">Type of property</label>
+                <input name="property_type" value={form.property_type} onChange={onChange} className="mt-1 w-full rounded-md border border-neutral-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-neutral-400" placeholder="Apartment, villa, commercial, Airbnb…" />
               </div>
               <div className="sm:col-span-2">
                 <label className="text-sm text-neutral-700">Message</label>
@@ -60,7 +64,7 @@ export default function Contact() {
           <div className="space-y-6">
             <div className="p-6 rounded-xl border border-neutral-200 bg-white">
               <p className="text-sm text-neutral-600">Email</p>
-              <a href="mailto:studio@example.com" className="block text-neutral-900 hover:underline">studio@example.com</a>
+              <a href="mailto:contact@biancopropertyphoto.com" className="block text-neutral-900 hover:underline">contact@biancopropertyphoto.com</a>
               <p className="mt-4 text-sm text-neutral-600">Phone</p>
               <a href="tel:+356000000" className="block text-neutral-900 hover:underline">+356 0000 0000</a>
               <div className="mt-6 text-sm text-neutral-600">Available across Malta.</div>
